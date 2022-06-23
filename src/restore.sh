@@ -2,6 +2,7 @@
 
 set -u
 set -o pipefail
+cd /tmp
 
 if [ -z "$S3_ACCESS_KEY_ID" ]; then
   echo "You need to set the S3_ACCESS_KEY_ID environment variable."
