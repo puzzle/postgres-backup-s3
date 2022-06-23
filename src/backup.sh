@@ -2,6 +2,7 @@
 
 set -eu
 set -o pipefail
+cd /tmp
 
 if [ -z "$S3_ACCESS_KEY_ID" ]; then
   echo "You need to set the S3_ACCESS_KEY_ID environment variable."
@@ -95,6 +96,7 @@ if [ -n "$BACKUP_KEEP_DAYS" ]; then
     --prefix "${S3_PREFIX}" \
     --query "${backups_query}" \
     --output text \
+    --endpoint-url "$S3_ENDPOINT" \
     | xargs -n1 -t -I 'KEY' aws s3 rm s3://"${S3_BUCKET}"/'KEY'
   echo "Removing complete."
 fi
