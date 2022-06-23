@@ -83,7 +83,7 @@ aws $aws_args s3 cp "${s3_uri_base}/${key_suffix}" "db${file_type}"
 
 if [ -n "$PASSPHRASE" ]; then
   echo "Decrypting backup..."
-  gpg --decrypt --batch --passphrase "$PASSPHRASE" db.dump.gpg > db.dump
+  gpg --no-options --decrypt --batch --passphrase "$PASSPHRASE" db.dump.gpg > db.dump
   rm db.dump.gpg
 fi
 
