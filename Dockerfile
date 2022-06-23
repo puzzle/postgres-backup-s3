@@ -2,6 +2,7 @@ FROM alpine:3.14
 
 ADD src/install.sh install.sh
 RUN sh install.sh && rm install.sh
+RUN apk add bash
 
 ENV POSTGRES_DATABASE ''
 ENV POSTGRES_HOST ''
