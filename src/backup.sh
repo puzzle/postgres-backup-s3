@@ -57,8 +57,7 @@ export AWS_DEFAULT_REGION=$S3_REGION
 export PGPASSWORD=$POSTGRES_PASSWORD
 
 echo "Creating backup of $POSTGRES_DATABASE database..."
-backup_cmd="pg_dump \
-        -c -O -x \
+backup_cmd="pg_dump --format=custom \
         -h $POSTGRES_HOST \
         -p $POSTGRES_PORT \
         -U $POSTGRES_USER \

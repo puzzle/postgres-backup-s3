@@ -90,7 +90,7 @@ fi
 
 conn_opts="-h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER -d $POSTGRES_DATABASE"
 
-restore_cmd="psql $conn_opts -f db.dump"
+restore_cmd="pg_restore $conn_opts -v db.dump"
 
 echo "Restoring from backup..."
 
