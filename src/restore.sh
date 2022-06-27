@@ -90,8 +90,13 @@ fi
 
 conn_opts="-h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER -d $POSTGRES_DATABASE"
 
-echo "Restoring from backup..."
-pg_restore $conn_opts --clean --if-exists db.dump
-rm db.dump
+restore_cmd="pg_restore $conn_opts --clean --if-exists db.dump"
 
-echo "Restore complete."
+echo "Restoring from backup..."
+
+if $restore_cmd; then
+  echo "Restore complete."
+  rm db.dump
+else
+  echo "Restore failed!"
+fi
